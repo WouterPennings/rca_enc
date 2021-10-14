@@ -1,6 +1,5 @@
 import math
 
-
 class RSA_ENC:
 
     def __init__(self, _p, _q):
@@ -18,6 +17,11 @@ class RSA_ENC:
 
     def decrypt(self, number):
         return int(math.floor(math.pow(number, self.dKey) % self.n))
+
+    #  |                             |
+    #  |  Below are private methods  |
+    #  |                             |
+    # \/                            \/
 
     def __generateKeys(self):
         self.eKey = self.__generateEncryptionKey()
@@ -38,12 +42,12 @@ class RSA_ENC:
             i = i + 1
 
     # Credit: https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-119.php
+    def __isCoprime(self, x, y):
+        return self.__gcd(x, y) == 1
+
+    # Credit: https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-119.php
     @staticmethod
     def __gcd(p, q):
         while q != 0:
             p, q = q, p % q
         return p
-
-    # Credit: https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-119.php
-    def __isCoprime(self, x, y):
-        return self.__gcd(x, y) == 1
