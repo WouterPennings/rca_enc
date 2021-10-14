@@ -1,4 +1,4 @@
-https://github.com/wouterpennings/rca_enc/workflows/python_tests/badge.svg
+![Build Status - GitHub](https://github.com/wouterpennings/rca_enc/workflows/python_tests/badge.svg)
 ---
 
 # RCA Encryption
