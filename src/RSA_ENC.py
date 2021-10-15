@@ -3,14 +3,13 @@ import math
 class RSA_ENC:
 
     def __init__(self, _p, _q):
-        self.q = _q
         self.p = _p
+        self.q = _q
         self.n = _p * _q
         self.t = (_p - 1) * (_q - 1)
 
         self.dKey = None
         self.eKey = None
-        self.__generateKeys()
 
     def encrypt(self, number):
         return int(math.floor(math.pow(number, self.eKey) % self.n))
@@ -18,14 +17,14 @@ class RSA_ENC:
     def decrypt(self, number):
         return int(math.floor(math.pow(number, self.dKey) % self.n))
 
+    def generateKeys(self):
+        self.eKey = self.__generateEncryptionKey()
+        self.dKey = self.__generateDecryptionKey()
+
     #  |                             |
     #  |  Below are private methods  |
     #  |                             |
     # \/                            \/
-
-    def __generateKeys(self):
-        self.eKey = self.__generateEncryptionKey()
-        self.dKey = self.__generateDecryptionKey()
 
     def __generateEncryptionKey(self):
         for x in range(2, self.t + 1):
