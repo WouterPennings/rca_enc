@@ -5,18 +5,17 @@ currentDir = os.path.dirname(os.path.realpath(__file__))
 parentDir = os.path.dirname(currentDir)
 sys.path.append(parentDir)
 
-from src import RSA_ENC
+from src import rsa
 
 def test_rsa_p():
-    answer = [1, 2, 3, 4, 5, 6, 122]
+    answer = [2, 3, 5, 7, 11, 409]
     expected = [
-        RSA_ENC.RSA_ENC(1, 1).p,
-        RSA_ENC.RSA_ENC(2, 1).p,
-        RSA_ENC.RSA_ENC(3, 1).p,
-        RSA_ENC.RSA_ENC(4, 1).p,
-        RSA_ENC.RSA_ENC(5, 1).p,
-        RSA_ENC.RSA_ENC(6, 1).p,
-        RSA_ENC.RSA_ENC(122, 1).p
+        rsa.rsa(2, 3).p,
+        rsa.rsa(3, 3).p,
+        rsa.rsa(5, 3).p,
+        rsa.rsa(7, 3).p,
+        rsa.rsa(11, 3).p,
+        rsa.rsa(409, 3).p
     ]
     x = doTest(answer, expected)
     if x[0] is False:
@@ -24,15 +23,14 @@ def test_rsa_p():
     assert x[0]
 
 def test_rsa_q():
-    answer = [1, 2, 3, 4, 5, 6, 122]
+    answer = [2, 3, 5, 7, 11, 409]
     expected = [
-        RSA_ENC.RSA_ENC(1, 1).q,
-        RSA_ENC.RSA_ENC(1, 2).q,
-        RSA_ENC.RSA_ENC(1, 3).q,
-        RSA_ENC.RSA_ENC(1, 4).q,
-        RSA_ENC.RSA_ENC(1, 5).q,
-        RSA_ENC.RSA_ENC(1, 6).q,
-        RSA_ENC.RSA_ENC(1, 122).q
+        rsa.rsa(3, 2).q,
+        rsa.rsa(3, 3).q,
+        rsa.rsa(3, 5).q,
+        rsa.rsa(3, 7).q,
+        rsa.rsa(3, 11).q,
+        rsa.rsa(3, 409).q
     ]
     x = doTest(answer, expected)
     if x[0] is False:
@@ -42,11 +40,11 @@ def test_rsa_q():
 def test_rsa_t():
     answer = [6, 10, 12, 32, 72]
     expected = [
-        RSA_ENC.RSA_ENC(2, 7).t,
-        RSA_ENC.RSA_ENC(2, 11).t,
-        RSA_ENC.RSA_ENC(2, 13).t,
-        RSA_ENC.RSA_ENC(3, 17).t,
-        RSA_ENC.RSA_ENC(5, 19).t
+        rsa.rsa(2, 7).t,
+        rsa.rsa(2, 11).t,
+        rsa.rsa(2, 13).t,
+        rsa.rsa(3, 17).t,
+        rsa.rsa(5, 19).t
     ]
     x = doTest(answer, expected)
     if x[0] is False:
@@ -56,11 +54,11 @@ def test_rsa_t():
 def test_rsa_n():
     answer = [14, 22, 38, 95, 10]
     expected = [
-        RSA_ENC.RSA_ENC(2, 7).n,
-        RSA_ENC.RSA_ENC(2, 11).n,
-        RSA_ENC.RSA_ENC(2, 19).n,
-        RSA_ENC.RSA_ENC(5, 19).n,
-        RSA_ENC.RSA_ENC(2, 5).n
+        rsa.rsa(2, 7).n,
+        rsa.rsa(2, 11).n,
+        rsa.rsa(2, 19).n,
+        rsa.rsa(5, 19).n,
+        rsa.rsa(2, 5).n
     ]
     x = doTest(answer, expected)
     if x[0] is False:

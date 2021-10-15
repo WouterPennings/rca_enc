@@ -1,10 +1,13 @@
 import math
+import rsa_helper as REH
 
-class RSA_ENC:
+class rsa:
 
     def __init__(self, _p, _q):
-        self.p = _p
-        self.q = _q
+        if self.__inputIsCorrect(_p):
+            self.p = _p
+        if self.__inputIsCorrect(_q):
+            self.q = _q
         self.n = _p * _q
         self.t = (_p - 1) * (_q - 1)
 
@@ -28,7 +31,7 @@ class RSA_ENC:
 
     def __generateEncryptionKey(self):
         for x in range(2, self.t + 1):
-            result = self.__isCoprime(x, self.t)
+            result = REH.isCoprime(x, self.t)
             if result is True:
                 return x
 
@@ -40,13 +43,15 @@ class RSA_ENC:
                 return i
             i = i + 1
 
-    # Credit: https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-119.php
-    def __isCoprime(self, x, y):
-        return self.__gcd(x, y) == 1
+    def __inputIsCorrect(self, number):
+        x = isinstance(number, int)
+        if not x:
+            self.__raiseError("Number given was not of type: 'integer'")
+        x = REH.isPrime(number)
+        if not x:
+            self.__raiseError("Number given was prime'")
+        return True
 
-    # Credit: https://www.w3resource.com/python-exercises/basic/python-basic-1-exercise-119.php
     @staticmethod
-    def __gcd(p, q):
-        while q != 0:
-            p, q = q, p % q
-        return p
+    def __raiseError(message):
+        raise ValueError('rsa Exception → {}'.format(message))

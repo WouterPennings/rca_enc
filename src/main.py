@@ -1,9 +1,9 @@
-from RSA_ENC import RSA_ENC
+from rsa import rsa as rsa_enc
 
 def main():
     print("RSA_ENCRYPTION Demo")
 
-    rsa = RSA_ENC(2, 7)
+    rsa = rsa_enc(2, 7)
     rsa.generateKeys()
 
     message = int(input("Please enter a number (0 < x < 14): "))
