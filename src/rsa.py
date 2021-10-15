@@ -1,5 +1,12 @@
+import os
+import sys
 import math
-import rsa_helper
+
+currentDir = os.path.dirname(os.path.realpath(__file__))
+parentDir = os.path.dirname(currentDir)
+sys.path.append(parentDir)
+
+from src import rsa_helper
 
 class rsa:
 
