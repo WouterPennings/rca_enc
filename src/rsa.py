@@ -1,5 +1,5 @@
 import math
-import rsa_helper as REH
+import rsa_helper
 
 class rsa:
 
@@ -31,7 +31,7 @@ class rsa:
 
     def __generateEncryptionKey(self):
         for x in range(2, self.t + 1):
-            result = REH.isCoprime(x, self.t)
+            result = rsa_helper.isCoprime(x, self.t)
             if result is True:
                 return x
 
@@ -47,7 +47,7 @@ class rsa:
         x = isinstance(number, int)
         if not x:
             self.__raiseError("Number given was not of type: 'integer'")
-        x = REH.isPrime(number)
+        x = rsa_helper.isPrime(number)
         if not x:
             self.__raiseError("Number given was prime'")
         return True
