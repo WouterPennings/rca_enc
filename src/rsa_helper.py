@@ -14,6 +14,7 @@ def gcd(p, q):
 def isPrime(n):
     return n > 1 and all(n % i for i in islice(count(2), int(sqrt(n) - 1)))
 
+# ToDO: Do not want to implement power functions, but math does some stupid rounding or something
 def pow(number, n):
     result = number
     for _ in range(n - 1):
