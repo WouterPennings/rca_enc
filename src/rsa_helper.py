@@ -13,3 +13,9 @@ def gcd(p, q):
 # Credit: https://stackoverflow.com/a/27946768
 def isPrime(n):
     return n > 1 and all(n % i for i in islice(count(2), int(sqrt(n) - 1)))
+
+def pow(number, n):
+    result = number
+    for _ in range(n - 1):
+        result = result * number
+    return result

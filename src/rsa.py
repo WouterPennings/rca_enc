@@ -22,10 +22,10 @@ class rsa:
         self.eKey = None
 
     def encrypt(self, number):
-        return int(math.floor(math.pow(number, self.eKey) % self.n))
+        return int(round(rsa_helper.pow(number, self.eKey) % self.n, 0))
 
     def decrypt(self, number):
-        return int(math.floor(math.pow(number, self.dKey) % self.n))
+        return int(round(rsa_helper.pow(number, self.dKey) % self.n, 0))
 
     def generateKeys(self):
         self.eKey = self.__generateEncryptionKey()
