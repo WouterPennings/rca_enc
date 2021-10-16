@@ -5,9 +5,9 @@ def main():
 
     rsa = rsa_enc(2, 19)
     rsa.generateKeys()
-    message = 1
-    while message > 0:
-        message = int(input("Please enter a number (0 < x < 14): "))
+    message = ''
+    while message != '!':
+        message = input("Enter a alphanumerical string: ")
         print("Message: {}".format(message))
 
         enc = rsa.encrypt(message)
