@@ -1,20 +1,23 @@
 from rsa import rsa as rsa_enc
 
-def main():
-    print("RSA_ENCRYPTION Demo")
+print("RSA_ENCRYPTION Demo")
 
+def main():
     rsa = rsa_enc(2, 19)
     rsa.generateKeys()
-    message = ''
+
+    message = input("\nEnter a alphanumerical string: ")
     while message != '!':
-        message = input("Enter a alphanumerical string: ")
-        print("Message: {}".format(message))
+        print("\nMessage: {}".format(message))
 
         enc = rsa.encrypt(message)
-        print("Encrypted message: {}".format(enc))
+        print("     Encrypted message: {}".format(enc))
 
         dec = rsa.decrypt(enc)
-        print("Decrypted message: {}".format(dec))
+        print("     Decrypted message: {}".format(dec))
+        message = input("\nEnter a alphanumerical string: ")
+
+    print("\nExit RSA encrypter\n")
 
 if __name__ == '__main__':
     main()
